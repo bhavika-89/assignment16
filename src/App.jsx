@@ -1,9 +1,11 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
+import Cart from "./pages/Cart";
 import ProductDetail from "./pages/ProductDetails";
 import AddProduct from "./pages/AddProduct";
 import EditProduct from "./pages/EditProduct";
 import DeleteProduct from "./pages/Deleteproduct";
+import { CartProvider } from "./context/CartContext";
 
 const App = () => {
   return (
@@ -16,13 +18,16 @@ const App = () => {
       </nav>
 
       <div className="container mx-auto p-4">
+        <CartProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/add" element={<AddProduct />} />
           <Route path="/edit/:id" element={<EditProduct />} />
           <Route path="/delete/:id" element={<DeleteProduct />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
+        </CartProvider>
       </div>
     </div>
   );
